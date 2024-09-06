@@ -10,6 +10,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(rmw_fastrtps_cpp REQUIRED)
+
+set(RMW_IMPLEMENTATION "rmw_fastrtps_cpp")
+add_definitions(-DRMW_IMPLEMENTATION=${RMW_IMPLEMENTATION})
 
 set(node_plugins "")
 

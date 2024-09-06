@@ -21,7 +21,7 @@ class SelfNode : public rclcpp::Node
 {
 public:
   explicit SelfNode(const std::string & node_name)
-  : Node(node_name)
+  : Node(node_name, rclcpp::NodeOptions().use_intra_process_comms(false))
   {
     using namespace std::chrono_literals;
     subsciber_ = this->create_subscription<builtin_interfaces::msg::Time>(
@@ -66,9 +66,11 @@ private:
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
+
   auto node_ = std::make_shared<SelfNode>("topic_self");
   rclcpp::executors::SingleThreadedExecutor executor_;
-
+  const char * implementation_name = rmw_get_implementation_identifier();
+  RCLCPP_INFO(node_->get_logger(), "Using RMW implementation: %s", implementation_name);
   executor_.add_node(node_);
   executor_.spin();
 
