@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+                // , "${workspaceFolder}/include/**"
+                // ,"~/ros2_humble/install/rclcpp/**"
+                ,"~/ros2_humble/install/rclcpp/include/rclcpp/**"
+            ],
+            "defines": [],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

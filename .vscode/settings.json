@@ -1,0 +1,11 @@
+{
+    "cmake.sourceDirectory": "/home/lucifer/Codes/ros-example/src/ros_example",
+    "cmake.configureOnOpen": true,
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "files.associations": {
+        "*.urdf": "xml",
+        "*.rviz": "yaml",
+        "*.sdf": "xml",
+        "chrono": "cpp"
+    }
+}

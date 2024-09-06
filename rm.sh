@@ -1,0 +1,1 @@
+rm build log install -rf
