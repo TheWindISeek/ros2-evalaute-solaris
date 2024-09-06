@@ -25,9 +25,11 @@ set(executable_self self_node)
 set(executable_intra intra_nodes)
 set(executable_loanp loan_pub)
 set(executable_stat  stat_sub)
+set(executable_ros_app1 ros_app1)
 
 set(dependencies
   rclcpp
+  std_msgs
 )
 
 add_executable(${executable_pub}
@@ -54,6 +56,10 @@ add_executable(${executable_stat}
   src/sub_statistics.cpp
 )
 
+add_executable(${executable_ros_app1}
+  src/ros_app1.cpp
+)
+
 ament_target_dependencies(${executable_pub}
   ${dependencies}
 )
@@ -75,6 +81,10 @@ ament_target_dependencies(${executable_loanp}
 )
 
 ament_target_dependencies(${executable_stat}
+  ${dependencies}
+)
+
+ament_target_dependencies(${executable_ros_app1}
   ${dependencies}
 )
 
@@ -114,6 +124,7 @@ install(
   TARGETS ${executable_intra}
   TARGETS ${executable_loanp}
   TARGETS ${executable_stat}
+  TARGETS ${executable_ros_app1}
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 

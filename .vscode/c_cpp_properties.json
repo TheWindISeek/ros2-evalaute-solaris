@@ -4,6 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**"
+                ,"${workspaceFolder}/src/ros_evaluate_solaris/include/**"
                 // , "${workspaceFolder}/include/**"
                 // ,"~/ros2_humble/install/rclcpp/**"
                 ,"~/ros2_humble/install/rclcpp/include/rclcpp/**"

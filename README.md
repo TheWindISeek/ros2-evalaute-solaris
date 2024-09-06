@@ -15,7 +15,6 @@
 （3）隔离CPU核心的利用率。
 5.ROS_App2在未隔离CPU核心上运行，ROS_App2不运行实际回调，只创建节点和摧毁节点，节点类型分下列情况：
  （1）每个节点内没有发布者和订阅者；
-
  （2）每个节点内存在一个发布者和一个订阅者，但是发布者与订阅者的主题与ROS_App1无关；
  （3）每个节点内存在两个发布者，并且发布者的主题与ROS_App1相关，但是发布者不实际发布数据。
 
@@ -29,6 +28,12 @@
 ```shell
 colcon build --packages-up-to ros_evaluate_solaris --allow-overriding rmw_fastrtps_cpp
 ```
+# check rmw
+run 
+```
+ros2 run ros_evaluate_solaris self_node 
+```
+to check
 
 # rmw_fastrtos_cpp
 

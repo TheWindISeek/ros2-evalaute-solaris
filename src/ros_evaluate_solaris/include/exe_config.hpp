@@ -81,7 +81,7 @@ static inline void dummy_load_calibration() {
   ts_start = get_clocktime(); // in ns
   dummy_load_ms(10);          // 10ms
   ts_end = get_clocktime();   // in ns
-  printf("|CALIBRATION TEST|[Setting: 10ms]->@time-measure: %lu. \r\n", ts_end-ts_start);
+  // printf("|CALIBRATION TEST|[Setting: 10ms]->@time-measure: %lu. \r\n", ts_end-ts_start);
 }
 
 #endif
