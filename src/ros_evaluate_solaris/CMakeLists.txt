@@ -26,12 +26,14 @@ set(executable_intra intra_nodes)
 set(executable_loanp loan_pub)
 set(executable_stat  stat_sub)
 set(executable_ros_app1 ros_app1)
+set(executable_ros_app2 ros_app2)
 
 set(dependencies
   rclcpp
   std_msgs
 )
 
+# add_executable
 add_executable(${executable_pub}
   src/pub_node.cpp
 )
@@ -60,6 +62,11 @@ add_executable(${executable_ros_app1}
   src/ros_app1.cpp
 )
 
+add_executable(${executable_ros_app2}
+  src/ros_app2.cpp
+)
+
+# dependencies
 ament_target_dependencies(${executable_pub}
   ${dependencies}
 )
@@ -88,6 +95,11 @@ ament_target_dependencies(${executable_ros_app1}
   ${dependencies}
 )
 
+ament_target_dependencies(${executable_ros_app2}
+  ${dependencies}
+)
+
+# component
 add_library(pub_node_component SHARED
   src/pub_node_component.cpp)
 target_compile_definitions(pub_node_component
@@ -110,6 +122,8 @@ ament_target_dependencies(sub_node_component
 rclcpp_components_register_nodes(sub_node_component "solaris_test::SubNodeComponent")
 set(node_plugins "${node_plugins}solaris_test::SubNodeComponent;$<TARGET_FILE:SubNodeComponent>\n")
 
+
+# install(component and executable)
 install(TARGETS
   pub_node_component
   sub_node_component
@@ -125,6 +139,7 @@ install(
   TARGETS ${executable_loanp}
   TARGETS ${executable_stat}
   TARGETS ${executable_ros_app1}
+  TARGETS ${executable_ros_app2}
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 

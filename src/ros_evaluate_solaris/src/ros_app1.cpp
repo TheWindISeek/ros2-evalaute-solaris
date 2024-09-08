@@ -9,6 +9,7 @@ int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
   
+  // 创建稳定的任务链 false=>采取异步通信的方式
   auto node1 = std::make_shared<BeginNode>
     ("chain1_node1", "topic1_1", 1, 1, 10, 100, false);
   auto node2 = std::make_shared<MidNode>
