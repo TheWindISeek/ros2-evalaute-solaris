@@ -44,3 +44,14 @@ if (!participant_info->leave_middleware_default_qos) {
     writer_qos.publish_mode().kind = eprosima::fastrtps::ASYNCHRONOUS_PUBLISH_MODE;
 }
 ```
+# use multi ssh in one single host
+https://www.jianshu.com/p/12badb7e6c10
+
+you can test
+```shell
+echo "test git@github.com"
+ssh -T git@github.com
+echo ""test github-lucifer"
+ssh -T github-lucifer
+```
+

@@ -2,3 +2,8 @@
 Host neu_solaris
     HostName 202.199.7.220
     User neu
+
+Host github-lucifer
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
