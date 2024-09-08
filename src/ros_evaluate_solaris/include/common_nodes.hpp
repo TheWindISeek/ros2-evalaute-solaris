@@ -66,7 +66,7 @@ class BeginNode : public rclcpp::Node {
   }
 
   ~BeginNode() {
-      std::cout << "beginnode destory\n";
+      // std::cout << "beginnode destory\n";
   }
 
   protected:
@@ -80,7 +80,7 @@ class BeginNode : public rclcpp::Node {
       dummy_load_ms(execute_time_);
       pub_->publish(std::move(msg));
 
-      chain_end_print(count_, chain_idx_, node_idx_);
+      // chain_end_print(count_, chain_idx_, node_idx_);
     }
 
 
@@ -130,7 +130,7 @@ class MidNode : public rclcpp::Node {
   }
 
   ~MidNode() {
-    std::cout << "midnode destory\n";
+    // std::cout << "midnode destory\n";
   }
 
   protected:
@@ -139,10 +139,10 @@ class MidNode : public rclcpp::Node {
       output_msg->data = msg->data;
 
       size_t count = std::stoul(msg->data);
-      chain_start_print(count, chain_idx_, node_idx_);
+      // chain_start_print(count, chain_idx_, node_idx_);
       dummy_load_ms(execute_time_);
       pub_->publish(std::move(output_msg));
-      chain_end_print(count, chain_idx_, node_idx_);
+      // chain_end_print(count, chain_idx_, node_idx_);
     }
 
 
@@ -183,7 +183,7 @@ class EndNode : public rclcpp::Node {
   }
 
   ~EndNode() {
-      std::cout << "endnode destory\n";
+      // std::cout << "endnode destory\n";
   }
 
   protected:
@@ -192,7 +192,7 @@ class EndNode : public rclcpp::Node {
     auto output_msg = std::make_unique<std_msgs::msg::String>();
     output_msg->data = msg->data;
 
-    chain_start_print(std::stoi(output_msg->data), chain_idx_, node_idx_);
+    // chain_start_print(std::stoi(output_msg->data), chain_idx_, node_idx_);
     dummy_load_ms(execute_time_);
     chain_end_print(std::stoi(output_msg->data), chain_idx_, node_idx_);
   }

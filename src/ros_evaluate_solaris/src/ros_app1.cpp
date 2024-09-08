@@ -1,5 +1,6 @@
 #include <memory>
 #include <string>
+#include <cstdio>
 
 #include "rclcpp/rclcpp.hpp"
 #include "common_nodes.hpp"
@@ -9,6 +10,9 @@ int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
   
+  const char* record_file = argc > 1 ? argv[1] : "record/RECORD";
+
+  FILE* file = freopen(record_file, "w", stdout);  
   // 创建稳定的任务链 false=>采取异步通信的方式
   auto node1 = std::make_shared<BeginNode>
     ("chain1_node1", "topic1_1", 1, 1, 10, 100, false);
@@ -24,7 +28,7 @@ int main(int argc, char ** argv)
   executor_.add_node(node3);
   
   executor_.spin();
-
+  fclose(file);
   rclcpp::shutdown();
   return 0;
 }
