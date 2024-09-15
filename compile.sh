@@ -1,1 +1,1 @@
-colcon build --packages-up-to ros_evaluate_solaris --allow-overriding rmw_fastrtps_cpp
+colcon build --packages-up-to ros2_evaluate_solaris --allow-overriding rmw_fastrtps_cpp

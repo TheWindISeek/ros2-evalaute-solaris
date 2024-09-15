@@ -77,7 +77,7 @@ def main():
     os.system("cd ../../..")
     # os.system("pwd")
     # read_file('record/RECORD')
-    num_of_chain, datas = read_file('--ros-args')
+    num_of_chain, datas = read_file('record/--ros-args')
     calc_latency(num_of_chain, datas)
 
 if __name__ == '__main__':

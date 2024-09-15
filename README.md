@@ -55,3 +55,54 @@ echo ""test github-lucifer"
 ssh -T github-lucifer
 ```
 
+# how to use caret in current project
+
+```shell
+# Environment settings (keep the order as below)
+source /opt/ros/humble/setup.bash
+source ~/ros2_caret_ws/install/local_setup.bash
+source ~/ros2_ws/install/local_setup.bash
+
+# Enable tracepoints which are defined hooked functions.
+export LD_PRELOAD=$(readlink -f ~/Codes/ros2_caret_ws/install/caret_trace/lib/libcaret.so)
+
+# (Optional) Exclude nodes and topics which you are not concerned with
+export CARET_IGNORE_NODES="/rviz*"
+export CARET_IGNORE_TOPICS="/clock:/parameter_events"
+
+# Launch the target application, demos_end_to_end_sample
+ros2 launch caret_demos end_to_end_sample.launch.py
+
+```
+
+```shell
+
+source /opt/ros/humble/setup.bash
+source ~/ros2_caret_ws/install/local_setup.bash
+
+# set a destination directory. ~/.ros/tracing is default.
+mkdir -p ~/ros2_caret/evaluate
+export ROS_TRACE_DIR=~/ros2_caret_evaluate
+
+ros2 caret record -s end_to_end_sample
+
+# Start recording with pressing Enter key
+# > All process tarted recording.
+# > press enter to stop...
+
+```
+
+```shell
+# 检查记录数据的有效性
+ros2 caret check_ctf ~/ros2_caret_evaluate/end_to_end_sample
+
+```
+
+or 
+
+use launch file
+
+```shell
+./export_caret_env.sh
+ros2 launch 
+```

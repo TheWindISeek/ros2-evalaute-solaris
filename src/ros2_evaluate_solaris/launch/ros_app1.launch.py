@@ -61,6 +61,6 @@ def generate_launch_description():
     # launch_ros.actions.Node(
         # package='caret_demos', executable='end_to_end_sample', output='screen'),
     launch_ros.actions.Node(
-        package='ros_evaluate_solaris', executable='ros_app1', output='screen'),
+        package='ros2_evaluate_solaris', executable='ros_app1', output='screen'),
     shutdown_timer,
   ])
