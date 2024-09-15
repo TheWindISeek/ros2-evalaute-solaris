@@ -27,6 +27,7 @@ set(executable_loanp loan_pub)
 set(executable_stat  stat_sub)
 set(executable_ros_app1 ros_app1)
 set(executable_ros_app2 ros_app2)
+set(executable_executor_mt executor_mt)
 
 set(dependencies
   rclcpp
@@ -66,6 +67,10 @@ add_executable(${executable_ros_app2}
   src/ros_app2.cpp
 )
 
+add_executable(${executable_executor_mt}
+  src/executor_mt.cpp
+)
+
 # dependencies
 ament_target_dependencies(${executable_pub}
   ${dependencies}
@@ -96,6 +101,10 @@ ament_target_dependencies(${executable_ros_app1}
 )
 
 ament_target_dependencies(${executable_ros_app2}
+  ${dependencies}
+)
+
+ament_target_dependencies(${executable_executor_mt}
   ${dependencies}
 )
 
@@ -140,7 +149,13 @@ install(
   TARGETS ${executable_stat}
   TARGETS ${executable_ros_app1}
   TARGETS ${executable_ros_app2}
+  TARGETS ${executable_executor_mt}
   RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+ DIRECTORY launch
+ DESTINATION share/${PROJECT_NAME} 
 )
 
 if(BUILD_TESTING)

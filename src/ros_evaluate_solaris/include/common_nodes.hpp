@@ -51,6 +51,7 @@ class BeginNode : public rclcpp::Node {
       : Node(node_name, rclcpp::NodeOptions().use_intra_process_comms(use_intra_process_comms)),
       chain_idx_(chain_idx), node_idx_(node_idx), execute_time_(execute_time)
       {
+        this->count_ = 0;
         // keep last 10
         pub_ = this->create_publisher<std_msgs::msg::String>(output_topic, 10);
         timer_ = this->create_wall_timer(std::chrono::milliseconds(period), 
@@ -194,7 +195,7 @@ class EndNode : public rclcpp::Node {
 
     // chain_start_print(std::stoi(output_msg->data), chain_idx_, node_idx_);
     dummy_load_ms(execute_time_);
-    chain_end_print(std::stoi(output_msg->data), chain_idx_, node_idx_);
+    chain_end_print(std::stoul(output_msg->data), chain_idx_, node_idx_);
   }
 
   // 第几条chain的第几个node

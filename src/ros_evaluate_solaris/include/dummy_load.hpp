@@ -25,12 +25,20 @@ const int DUMMY_LOAD_ITER = 100;
 int dummy_load_calib = 1;
 
 
+// static inline void 
+// dummy_load_ms(int load_ms) {
+//   int i, j;
+//   for (j = 0; j < dummy_load_calib * load_ms; j++)
+//       for (i = 0 ; i < DUMMY_LOAD_ITER; i++) 
+//           __asm__ volatile ("nop");
+// }
+
 static inline void 
 dummy_load_ms(int load_ms) {
-  int i, j;
-  for (j = 0; j < dummy_load_calib * load_ms; j++)
-      for (i = 0 ; i < DUMMY_LOAD_ITER; i++) 
-          __asm__ volatile ("nop");
+    int i, j;
+    for (j = 0; j < dummy_load_calib * load_ms; j++)
+        for (i = 0 ; i < DUMMY_LOAD_ITER; i++) 
+            __asm__ volatile ("cpuid" ::: "eax", "ebx", "ecx", "edx");
 }
 
 static inline void 
